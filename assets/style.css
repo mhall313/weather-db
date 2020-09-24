@@ -26,6 +26,7 @@ h1, h5{
     margin:15px;
     padding:20px;
     text-align: center;
+    opacity:95%;
 }
 .lead{
     margin-bottom: 8px;
@@ -43,6 +44,7 @@ h1, h5{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
     padding:20px;
     line-height:150%;
+    opacity:95%;
 }
 .btn{
     background-color:rgb(226, 183, 41);
