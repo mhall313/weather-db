@@ -1,7 +1,10 @@
 body{
     background-image: url("assets\fall-background.jpg");
     background-color: rgb(39, 7, 7);
-    margin: 50px;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-right:20px;
+    padding-left: 20px;
     color: rgb(226, 183, 41);
     font-family: 'Big Shoulders Display', cursive;
 
@@ -33,6 +36,7 @@ h1, h5{
 }
 .page-content{
     margin-top:177px;
+    margin-bottom: 0px;
 }
 .side-bar, .main-content{
     padding: 10px;
