@@ -54,6 +54,10 @@ h1, h5{
     background-color:rgb(226, 183, 41);
     border-color: rgb(226, 183, 41);
 }
+.btn:hover{
+    background-color: rgb(39, 7, 7);
+    border-color: rgb(39, 7, 7);
+}
 .list-group, .card{
     color: rgb(124, 29, 29);
 }
