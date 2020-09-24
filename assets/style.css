@@ -1,8 +1,15 @@
 body{
+    background-image: url("assets\fall-background.jpg");
     background-color: rgb(39, 7, 7);
     margin: 50px;
     color: rgb(226, 183, 41);
     font-family: 'Big Shoulders Display', cursive;
+
+    background-image: url("fall-background.jpg");
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-attachment:fixed;
 }
 h1, h5{
     font-family: 'Vampiro One', cursive;
@@ -16,6 +23,15 @@ h1, h5{
     border-radius: 15px; /*rounded boxes*/
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
     line-height:150%;
+    margin:15px;
+    padding:20px;
+    text-align: center;
+}
+.lead{
+    margin-bottom: 8px;
+}
+.page-content{
+    margin-top:177px;
 }
 .side-bar, .main-content{
     padding: 10px;
