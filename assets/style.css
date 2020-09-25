@@ -63,7 +63,6 @@ h1, h5{
 .search-history{
     margin-top:15px;
     font-style: oblique;
-    font-size: larger;
 }
 .list-group-item:hover{
     border-color: rgb(39, 7, 7);
@@ -81,10 +80,12 @@ h1, h5{
 }
 .text-small{
     margin-bottom:8px;
-    font-size: medium;
 }
 .five-day{
     margin: 15px;
 }
-
-
+@media screen and (max-width: 768px) {
+    .page-content{
+        margin-top:244px;
+    }  
+}
