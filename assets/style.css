@@ -40,7 +40,6 @@ h1, h5{
 }
 .side-bar, .main-content{
     padding: 10px;
-    
 }
 .wrapper{
     background-color: rgb(156, 61, 16);
@@ -65,6 +64,10 @@ h1, h5{
     margin-top:15px;
     font-style: oblique;
     font-size: larger;
+}
+.list-group-item:hover{
+    border-color: rgb(39, 7, 7);
+    color: rgb(226,183,41);
 }
 .card{
     border-radius: 15px;
