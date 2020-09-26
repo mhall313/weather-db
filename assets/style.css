@@ -18,9 +18,10 @@ h1, h5{
     font-family: 'Vampiro One', cursive;
     text-shadow: 2px 2px 4px #000000;
 }
-.current-city{
+.current-city, .forecast-day{
     text-shadow: 0px 0px 0px;
 }
+
 .title-bar{
     background-color: rgb(156, 61, 16);
     border-radius: 15px; /*rounded boxes*/
@@ -71,6 +72,9 @@ h1, h5{
 .card{
     border-radius: 15px;
     box-shadow: 2px 2px 4px #00000094,2px 2px 4px #00000094;
+}
+.day-0, .day-1, .day-2, .day-3, .day-4{
+    width: 200px;
 }
 .form-control, .btn, .list-group{
     box-shadow: 2px 2px 4px #00000094,2px 2px 4px #00000094;
