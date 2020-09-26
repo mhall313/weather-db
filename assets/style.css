@@ -88,6 +88,10 @@ h1, h5{
 .five-day{
     margin: 15px;
 }
+.weather-icon{
+    background-color:rgb(226, 183, 41);
+    border-radius:15px;
+}
 @media screen and (max-width: 768px) {
     .page-content{
         margin-top:244px;
