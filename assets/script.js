@@ -24,7 +24,7 @@ var cityName = "Richmond";
 var APIkey = "84e4a73dbe21261105a8b82f64a0523a";
 //What do we need to accomplish
 //When a city is entered - present current & future cond
-    //Aka given user input populate cards
+    //Aka run functions
 
 //STEP A - Save input from Search
 
@@ -38,7 +38,7 @@ function currentWeather(){
     }).then(function(response){
         mainCard.find(".current-city").html(response.name + ", " + response.sys.country);
         mainCard.find(".temp").html(Math.floor(response.main.temp) + "° F");
-        mainCard.find(".weather-icon").attr("src", "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png");
+        mainCard.find(".weather-icon").attr("src", "https://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png");
         mainCard.find(".humid").html("Humidity: "+Math.floor(response.main.humidity) + "%");
         mainCard.find(".wind-speed").html("Wind Speed: "+Math.floor(response.wind.speed)+"mph");
         var lon = response.coord.lon;
@@ -47,7 +47,7 @@ function currentWeather(){
 
         //nest ajax ... 
         var APIkey = "84e4a73dbe21261105a8b82f64a0523a";
-        var queryURL = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat +"&lon="+lon+"&appid=" + APIkey
+        var queryURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat +"&lon="+lon+"&appid=" + APIkey
         $.ajax({
             url: queryURL,
             method: "GET",
@@ -59,7 +59,7 @@ function currentWeather(){
 currentWeather();
 
 function futureWeather(){
-    var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q="+ cityName +"&units=imperial&appid=" + APIkey
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q="+ cityName +"&units=imperial&appid=" + APIkey
     $.ajax({
         url: queryURL,
         method: "GET",
@@ -83,7 +83,7 @@ function futureWeather(){
             }
             card.find(".forecast-day").html(forecastDay.format("ddd"));
             card.find(".date").html(forecastDay.format("MMM Do"))
-            card.find(".weather-icon").attr("src", "http://openweathermap.org/img/wn/" + wIcon + "@2x.png");
+            card.find(".weather-icon").attr("src", "https://openweathermap.org/img/wn/" + wIcon + "@2x.png");
             card.find(".temp-humid").html(temp+ "° F");
             humidity.html("Humidity: "+ humidPercent + "%");
             card.find(".temp-humid").append(humidity);
