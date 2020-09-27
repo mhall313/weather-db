@@ -20,11 +20,56 @@ month[11] = "Dec";
 var calD = month[dt.getMonth()] + " " + dt.getDate() + ", " + dt.getFullYear();
 mainCard.find(".date").html(calD);
 
-var cityName = "Richmond";
+//Variables for API calls and local storage
+var cityNames = [];
 var APIkey = "84e4a73dbe21261105a8b82f64a0523a";
+
+
 //What do we need to accomplish
+//Start screen
+function init(){
+    //Styling and model visibility
+    $(".side-bar").css("opacity", "0");
+    $(".main-content").css("opacity","0");
+    $(".modal").toggle();
+    //initialize local storage
+    var storedCities = JSON.parse(localStorage.getItem("cityNames"));
+    if(storedCities !== null){
+        cityNames = storedCities;
+    }
+    renderCities();
+}
+init();
+//Close model when "x" is clicked, toggle opacity to side bar and main content
+$(".close").click(function(event){
+    event.preventDefault();
+    $(".modal"). toggle();
+    $(".side-bar").css("opacity", "100%");
+    $(".main-content").css("opacity","100%");
+    //need if statement for if the city was filled out or not
+    $(".card-deck").css("opacity", "0");
+    $(".main-card").html("To see the weather forecast, please search for your city.");
+})
 //When a city is entered - present current & future cond
-    //Aka run functions
+    //Save user input and run weather functions
+$(".search-button").click(function(event){
+    event.preventDefault();
+    var city = $(this).parent("form").find("input").val();
+    console.log(city);
+    localStorage.setItem("city",JSON.stringify(city));
+
+
+})
+
+function renderCities(){
+    //populate list items
+    $(".list-group").html("");
+    $.each(cityNames, function(value){
+        var li = $("<li>");
+        li.html = value;
+        $(".list-group").append(li);
+    });
+}
 
 //STEP A - Save input from Search
 
@@ -56,7 +101,6 @@ function currentWeather(){
         })
     })
 }
-currentWeather();
 
 function futureWeather(){
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q="+ cityName +"&units=imperial&appid=" + APIkey
@@ -92,7 +136,7 @@ function futureWeather(){
     })
 
 }
-futureWeather();
+
 //STEP C - When search history is clicked update cards to that city
 
 
