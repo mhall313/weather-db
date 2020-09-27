@@ -31,7 +31,7 @@ function init(){
     //Styling and model visibility
     $(".side-bar").css("opacity", "0");
     $(".main-content").css("opacity","0");
-    $(".modal").toggle();
+    $(".modal").toggle(); //this needs to get rid of not toggle
     //initialize local storage
     var storedCities = JSON.parse(localStorage.getItem("cityNames"));
     if(storedCities !== null){
@@ -40,14 +40,14 @@ function init(){
     renderCities();
 }
 init();
-//Close model when "x" is clicked, toggle opacity to side bar and main content
+//Hide/close model when "x" is clicked, toggle opacity to side bar and main content
 $(".close").click(function(event){
     event.preventDefault();
-    $(".modal"). toggle();
+    $(".modal"). toggle(); //this needs to get rid of not toggle
     $(".side-bar").css("opacity", "100%");
     $(".main-content").css("opacity","100%");
-    //need if statement for if the city was filled out or not
     $(".card-deck").css("opacity", "0");
+    $(".five-day").css("opacity","0");
     $(".main-card").html("To see the weather forecast, please search for your city.");
 })
 //When a city is entered - present current & future cond
@@ -56,26 +56,51 @@ $(".search-button").click(function(event){
     event.preventDefault();
     var city = $(this).parent("form").find("input").val();
     console.log(city);
-    localStorage.setItem("city",JSON.stringify(city));
-
-
+    if(city !== ""){
+        //STEP A - Save input from Search
+        localStorage.setItem("city",JSON.stringify(city));
+        cityNames.push(city);
+        storeCities();
+        renderCities();
+        $(".search-button").val = "";
+        $(".modal"). toggle();
+        $(".side-bar").css("opacity", "100%");
+        $(".main-content").css("opacity","100%");
+        storeCities();
+        renderCities();
+        currentWeather();
+        futureWeather();
+    }
+    else{
+        $(".modal"). toggle();
+        $(".side-bar").css("opacity", "100%");
+        $(".main-content").css("opacity","100%");
+        $(".card-deck").css("opacity", "0");
+        $(".five-day").css("opacity","0");
+        $(".main-card").html("To see the weather forecast, please search for your city."); 
+    }
 })
+
+function storeCities(){
+    localStorage.setItem("cityNames", JSON.stringify(cityNames));
+}
 
 function renderCities(){
     //populate list items
     $(".list-group").html("");
-    $.each(cityNames, function(value){
+    $.each(cityNames, function(index, value){
         var li = $("<li>");
-        li.html = value;
+        li.addClass("list-group-item");
+        li.html(value);
         $(".list-group").append(li);
     });
 }
 
-//STEP A - Save input from Search
-
 //STEP B - Ajax call to openweatherapp for user input info    
     //Make call dynamic based on variables so easily updated for new cities
 function currentWeather(){
+    //this will need to get the newest item from local storage and call it cityName
+    var cityName = cityNames[cityNames.length-1];
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+ cityName +"&units=imperial&appid=" + APIkey
     $.ajax({
         url: queryURL,
@@ -103,12 +128,13 @@ function currentWeather(){
 }
 
 function futureWeather(){
+    //also call from local storage CityName
+    var cityName = cityNames[cityNames.length-1];
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q="+ cityName +"&units=imperial&appid=" + APIkey
     $.ajax({
         url: queryURL,
         method: "GET",
     }).then(function(response){
-        console.log(response);
         for(var i =0; i < 5; i++){
             var card = $(".day-"+[i]);
             var humidity = $("<div>");

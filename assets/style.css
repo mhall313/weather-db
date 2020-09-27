@@ -85,7 +85,7 @@ h1, h5{
 .text-small{
     margin-bottom:8px;
 }
-.five-day{
+.five-day, .current-forecast{
     margin: 15px;
 }
 .weather-icon{
