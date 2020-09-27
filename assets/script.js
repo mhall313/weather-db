@@ -54,38 +54,11 @@ $(document).ready(function(){
     $(".search-button-1").click(function(event){
         event.preventDefault();
         var city = $(this).parent("form").find("input").val();
-        searchCity(city); //i need to pass the "this"
-        $(".modal"). toggle();
-    })
-
-    $(".search-button-2").click(function(event){
-        event.preventDefault(); // need to clear form to say City Name again
-        var city = $(this).parent("form").find("input").val();
-        searchCity(city);
-    }) 
-
-    //When search history is clicked update cards to that city
-    $(".list-group-item").click(function(){
-        var city = $(this).val();
-        searchCity(city);
-    })
-
-    //work more with this to make sure when first search modal goes tf away
-
-    function searchCity(city){
-        console.log(city);
-        //var city = $(this).parent("form").find("input").val();
         if(city !== ""){
-            //Save input from Search
-            localStorage.setItem("city",JSON.stringify(city));
-            cityNames.push(city);
             $(".search-button").val = "";
             $(".side-bar").css("opacity", "100%");
             $(".main-content").css("opacity","100%");
-            storeCities();
-            renderCities();
-            currentWeather(city);
-            futureWeather(city);
+            searchCity(city);
         }
         else{
             $(".side-bar").css("opacity", "100%");
@@ -94,7 +67,35 @@ $(document).ready(function(){
             $(".five-day").css("opacity","0");
             $(".main-card").html("To see the weather forecast, please search for your city."); 
         }
+        $(".modal"). toggle();
+    })
+
+    $(".search-button-2").click(function(event){
+        event.preventDefault();                                         // need to clear form to say City Name again
+        var city = $(this).parent("form").find("input").val();
+        searchCity(city);
+    }) 
+
+    //When search history is clicked update cards to that city
+    $(".list-group-item").click(function(event){
+        var city = $(this).val();
+        searchCity(city);
+        console.log(city);
+    })
+
+
+    //if input field is empty display please enter city to search message, if it is not empy log to local storage and run functions to store the user input, render any previously searched cities and display current and forecasted weather of the city searched
+    function searchCity(city){
+        //Save input from Search
+        localStorage.setItem("city",JSON.stringify(city));
+        cityNames.push(city);
+        storeCities();
+        renderCities();
+        currentWeather(city);
+        futureWeather(city);
     }
+
+
     //Store array of cities to local storage
     function storeCities(){
         localStorage.setItem("cityNames", JSON.stringify(cityNames));
@@ -177,7 +178,8 @@ $(document).ready(function(){
 
     }
 
-    //What's left
-    //when search history is clicked populate with searched city name
-    //what is they type in non-sense
+//What's left:
+    //when search history is clicked populate with searched city name - click listener isnt listening
+    // add state to current city header
+    //what if they type in non-sense
 })
