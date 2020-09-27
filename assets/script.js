@@ -24,14 +24,12 @@ mainCard.find(".date").html(calD);
 var cityNames = [];
 var APIkey = "84e4a73dbe21261105a8b82f64a0523a";
 
-
-//What do we need to accomplish
-//Start screen
+//Start screen - show modal requesting initial search input, hide via opacity the side-bar and main-content. Initializes local storage by populating cityNames with any from local storage 
 function init(){
     //Styling and model visibility
     $(".side-bar").css("opacity", "0");
     $(".main-content").css("opacity","0");
-    $(".modal").toggle(); //this needs to get rid of not toggle
+    $(".modal").toggle();
     //initialize local storage
     var storedCities = JSON.parse(localStorage.getItem("cityNames"));
     if(storedCities !== null){
@@ -40,7 +38,8 @@ function init(){
     renderCities();
 }
 init();
-//Hide/close model when "x" is clicked, toggle opacity to side bar and main content
+
+//Hide/close model when "x" is clicked, does not search weather rather displays message requesting city to search
 $(".close").click(function(event){
     event.preventDefault();
     $(".modal"). toggle(); //this needs to get rid of not toggle
@@ -50,18 +49,15 @@ $(".close").click(function(event){
     $(".five-day").css("opacity","0");
     $(".main-card").html("To see the weather forecast, please search for your city.");
 })
-//When a city is entered - present current & future cond
-    //Save user input and run weather functions
+
+//When the search button is clicked - set city to value of input field, if input field is empty display please enter city to search message, if it is not empy log to local storage and run functions to store the user input, render any previously searched cities and display current and forecasted weather of the city searched
 $(".search-button").click(function(event){
     event.preventDefault();
     var city = $(this).parent("form").find("input").val();
-    console.log(city);
     if(city !== ""){
         //STEP A - Save input from Search
         localStorage.setItem("city",JSON.stringify(city));
         cityNames.push(city);
-        storeCities();
-        renderCities();
         $(".search-button").val = "";
         $(".modal"). toggle();
         $(".side-bar").css("opacity", "100%");
@@ -80,11 +76,12 @@ $(".search-button").click(function(event){
         $(".main-card").html("To see the weather forecast, please search for your city."); 
     }
 })
-
+//Store array of cities to local storage
 function storeCities(){
     localStorage.setItem("cityNames", JSON.stringify(cityNames));
 }
 
+//render cities in local storage as list group items
 function renderCities(){
     //populate list items
     $(".list-group").html("");
@@ -96,10 +93,9 @@ function renderCities(){
     });
 }
 
-//STEP B - Ajax call to openweatherapp for user input info    
-    //Make call dynamic based on variables so easily updated for new cities
+//Ajax call to openweatherapp of user input city to display current weather and icon    
+    //Dynamic based on variables so easily updated for new cities
 function currentWeather(){
-    //this will need to get the newest item from local storage and call it cityName
     var cityName = cityNames[cityNames.length-1];
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+ cityName +"&units=imperial&appid=" + APIkey
     $.ajax({
@@ -115,7 +111,7 @@ function currentWeather(){
         var lat = response.coord.lat;
         
 
-        //nest ajax ... 
+        //Secondary AJAX call to show UVIndex due to different queryURL
         var APIkey = "84e4a73dbe21261105a8b82f64a0523a";
         var queryURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat +"&lon="+lon+"&appid=" + APIkey
         $.ajax({
@@ -127,6 +123,8 @@ function currentWeather(){
     })
 }
 
+//Ajax call to openweatherapp of user input city to display 5 day weather forecast and icons  
+    //Dynamic based on variables so easily updated for new cities
 function futureWeather(){
     //also call from local storage CityName
     var cityName = cityNames[cityNames.length-1];
@@ -163,9 +161,12 @@ function futureWeather(){
 
 }
 
-//STEP C - When search history is clicked update cards to that city
+//When search history is clicked update cards to that city
 
-
+//What's left
+   //fix the damn modal
+   //when search history is clicked populate with searched city name
+   //what is they type in non-sense
 
 
 
