@@ -20,8 +20,9 @@ $(document).ready(function(){
     var calD = month[dt.getMonth()] + " " + dt.getDate() + ", " + dt.getFullYear();
     mainCard.find(".date").html(calD);
 
-    //Variables for API calls and local storage
+    //Variables for API calls and local storage set up
     var cityNames = [];
+    localStorage.clear();
     var APIkey = "84e4a73dbe21261105a8b82f64a0523a";
 
     //Start screen - show modal requesting initial search input, hide via opacity the side-bar and main-content. Initializes local storage by populating cityNames with any from local storage 
