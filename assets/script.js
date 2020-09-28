@@ -74,8 +74,10 @@ $(document).ready(function(){
     })
 
     $(".search-button-2").click(function(event){
-        event.preventDefault();                                         // need to clear form to say City Name again
+        event.preventDefault();
         var city = $(this).parent("form").find("input").val();
+        $(this).parent("form").find("input").html("");
+        $(this).parent("form").find("input").attr("placeholder", "City Name");
         searchCity(city);
         storeCities();
         renderCities();
@@ -203,5 +205,5 @@ $(document).ready(function(){
 //What's left:
     //add state to current city header
     //what if they type in non-sense
-    //color code UV-index
+    //Clear search feild after search
 })

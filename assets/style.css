@@ -1,114 +1,90 @@
-body{
-    background-image: url("assets\fall-background.jpg");
-    background-color: rgb(39, 7, 7);
-    margin-left: 15px;
-    margin-right: 15px;
-    padding-right:20px;
-    padding-left: 20px;
-    color: rgb(226, 183, 41);
-    font-family: 'Big Shoulders Display', cursive;
-
-    background-image: url("fall-background.jpg");
-    background-position: center; 
-    background-repeat: no-repeat; 
-    background-size: cover; 
-    background-attachment:fixed;
+h1{
+    font-size: 32px;
 }
 h1, h5{
+    text-shadow: 2px 2px 4px #000000; 
     font-family: 'Vampiro One', cursive;
-    text-shadow: 2px 2px 4px #000000;
 }
-.current-city, .forecast-day{
-    text-shadow: 0px 0px 0px;
+body{
+    background-color: rgb(39, 7, 7); 
+    background-image: url("assets\fall-background.jpg"); 
+    background-image: url("fall-background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    font-family: 'Big Shoulders Display', cursive;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-left: 20px; 
+    padding-right: 20px;
 }
-
-.title-bar{
-    background-color: rgb(156, 61, 16);
-    border-radius: 15px; /*rounded boxes*/
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
-    line-height:150%;
-    margin:15px;
-    padding:20px;
-    text-align: center;
-    opacity:95%;
+.severe{
+    background-color: rgb(190, 35, 35);
 }
-.lead{
-    margin-bottom: 8px;
-}
-.page-content{
-    margin-top:177px;
-    margin-bottom: 0px;
-}
-.side-bar, .main-content{
-    padding: 10px;
-}
-.wrapper, .modal-content{
-    background-color: rgb(156, 61, 16);
-    border-radius: 15px; /*rounded boxes*/
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
-    padding:20px;
-    line-height:150%;
-    opacity:95%;
-}
-.btn{
-    background-color:rgb(226, 183, 41);
-    border-color: rgb(226, 183, 41);
-}
-.btn:hover, .btn:active{
-    background-color: rgb(39, 7, 7) !important;
-    border-color: rgb(39, 7, 7) !important;
-}
-.list-group, .card{
-    color: rgb(124, 29, 29);
+.severe, body{
+    color: rgb(226, 183, 41);
 }
 .search-history{
-    margin-top:15px;
-    font-style: oblique;
+    font-style: oblique; 
+    margin-top: 15px;
+}
+.page-content{
+    margin-bottom: 0px; 
+    margin-top: 168px;
+}
+.modal-content, .title-bar, .wrapper{
+    background-color: rgb(156, 61, 16);
+    border-radius: 15px; /*rounded boxes*/
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
+    opacity: 95%;
+    padding: 20px;
+}
+.mild{
+    background-color: rgb(28, 219, 11); 
+    color: black;
+}
+.mild, .moderate, .severe, .title-bar, .card-deck{
+    text-align: center;
 }
 .list-group-item:hover{
     border-color: rgb(39, 7, 7);
-    color: rgb(226,183,41);
 }
-.card{
-    border-radius: 15px;
-    box-shadow: 2px 2px 4px #00000094,2px 2px 4px #00000094;
+.lead, .text-small{
+    margin-bottom: 8px;
 }
 .day-0, .day-1, .day-2, .day-3, .day-4{
     width: 200px;
 }
-.form-control, .btn, .list-group{
-    box-shadow: 2px 2px 4px #00000094,2px 2px 4px #00000094;
-}
-.card-deck, .main-card{
-    margin:5px;
-}
-.text-small{
-    margin-bottom:8px;
-}
-.five-day, .current-forecast{
+.current-forecast, .five-day, .title-bar{
     margin: 15px;
 }
-.weather-icon{
-    background-color:rgb(226, 183, 41);
-    border-radius:15px;
+.current-city, .forecast-day{
+    text-shadow: 0px 0px 0px;
 }
-.mild{
-    border-radius:15px;
-    background-color: rgb(28, 219, 11);
-    color: black;
-    text-align: center;
+.card, .mild, .moderate, .severe, .weather-icon{
+    border-radius: 15px;
 }
-.moderate{
-    border-radius:15px;
-    background-color:rgb(226, 183, 41);
+.card, .list-group, .moderate{
     color: rgb(124, 29, 29);
-    text-align: center;
 }
-.severe{
-    border-radius:15px;
-    background-color:rgb(190, 35, 35);
-    color:rgb(226, 183, 41);
-    text-align: center;
+.card-deck, .main-card{
+    margin: 5px;
+}
+.card-body, .side-bar, .main-content{
+    padding: 10px;
+}
+.btn{
+    border-color: rgb(226, 183, 41);
+}
+.btn:hover, .btn:active{
+    background-color: rgb(39, 7, 7) !important; 
+    border-color: rgb(39, 7, 7) !important;
+}
+.btn, .moderate, .weather-icon{
+    background-color: rgb(226, 183, 41);
+}
+.btn, .card, .form-control, .list-group{
+    box-shadow: 2px 2px 4px #00000094,2px 2px 4px #00000094;
 }
 
 @media screen and (max-width: 768px) {
