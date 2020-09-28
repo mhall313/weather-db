@@ -68,20 +68,23 @@ $(document).ready(function(){
             $(".main-card").html("To see the weather forecast, please search for your city."); 
         }
         $(".modal"). toggle();
+        storeCities();
+        renderCities();
     })
 
     $(".search-button-2").click(function(event){
         event.preventDefault();                                         // need to clear form to say City Name again
         var city = $(this).parent("form").find("input").val();
         searchCity(city);
+        storeCities();
+        renderCities();
     }) 
 
     //When search history is clicked update cards to that city
-    $(".list-group-item").click(function(event){
-        var city = $(this).val();
+    $(".list-group").on("click", "li.list-group-item",(function(event){
+        var city = $(this).html();
         searchCity(city);
-        console.log(city);
-    })
+    }))
 
 
     //if input field is empty display please enter city to search message, if it is not empy log to local storage and run functions to store the user input, render any previously searched cities and display current and forecasted weather of the city searched
@@ -89,8 +92,6 @@ $(document).ready(function(){
         //Save input from Search
         localStorage.setItem("city",JSON.stringify(city));
         cityNames.push(city);
-        storeCities();
-        renderCities();
         currentWeather(city);
         futureWeather(city);
     }
@@ -109,7 +110,7 @@ $(document).ready(function(){
             var li = $("<li>");
             li.addClass("list-group-item");
             li.html(value);
-            $(".list-group").append(li);
+            $(".list-group").prepend(li);
         });
     }
 
@@ -137,7 +138,8 @@ $(document).ready(function(){
                 url: queryURL,
                 method: "GET",
             }).then(function(response){
-                mainCard.find(".uv-index").html("UV Index: "+Math.floor(response.value));
+                $(".uv-number").html(Math.floor(response.value));
+                warningUV();
             })
         })
     }
@@ -177,9 +179,28 @@ $(document).ready(function(){
         })
 
     }
+    //color code UV index
+    function warningUV(){
+        var uvIndex = $(".uv-number").html();
+        if(uvIndex <= 2){
+            $(".uv-number").addClass("mild");
+            $(".uv-number").removeClass("moderate");
+            $(".uv-number").removeClass("severe");
+        }
+        else if(uvIndex > 2 && uvIndex <= 5){
+            $(".uv-number").addClass("moderate");
+            $(".uv-number").removeClass("mild");
+            $(".uv-number").removeClass("severe");
+        }
+        else{
+            $(".uv-number").addClass("severe");
+            $(".uv-number").removeClass("mild");
+            $(".uv-number").removeClass("moderate");
+        }
+    }
 
 //What's left:
-    //when search history is clicked populate with searched city name - click listener isnt listening
-    // add state to current city header
+    //add state to current city header
     //what if they type in non-sense
+    //color code UV-index
 })

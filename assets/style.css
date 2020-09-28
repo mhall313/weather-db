@@ -92,6 +92,25 @@ h1, h5{
     background-color:rgb(226, 183, 41);
     border-radius:15px;
 }
+.mild{
+    border-radius:15px;
+    background-color: rgb(28, 219, 11);
+    color: black;
+    text-align: center;
+}
+.moderate{
+    border-radius:15px;
+    background-color:rgb(226, 183, 41);
+    color: rgb(124, 29, 29);
+    text-align: center;
+}
+.severe{
+    border-radius:15px;
+    background-color:rgb(190, 35, 35);
+    color:rgb(226, 183, 41);
+    text-align: center;
+}
+
 @media screen and (max-width: 768px) {
     .page-content{
         margin-top:244px;
