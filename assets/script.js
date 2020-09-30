@@ -1,5 +1,6 @@
 //To remove any potential syncing issues on load
 $(document).ready(function(){
+    //Define Global variables including the date, defining the main card element, array of months,  cityNames array for local storage, and API key
     var dt = new Date;
     var mainCard = $(".main-card")
 
@@ -72,12 +73,10 @@ $(document).ready(function(){
         storeCities();
         renderCities();
     })
-
+    //Populate current and forecast cards with new city input and render search history including last city searched
     $(".search-button-2").click(function(event){
         event.preventDefault();
         var city = $(this).parent("form").find("input").val();
-        $(this).parent("form").find("input").html("");
-        $(this).parent("form").find("input").attr("placeholder", "City Name");
         searchCity(city);
         storeCities();
         renderCities();
@@ -90,7 +89,7 @@ $(document).ready(function(){
     }))
 
 
-    //if input field is empty display please enter city to search message, if it is not empy log to local storage and run functions to store the user input, render any previously searched cities and display current and forecasted weather of the city searched
+    //Save city to local storage, push city to cityNames array and run functions to display current and forecasted weather
     function searchCity(city){
         //Save input from Search
         localStorage.setItem("city",JSON.stringify(city));
@@ -190,7 +189,7 @@ $(document).ready(function(){
             $(".uv-number").removeClass("moderate");
             $(".uv-number").removeClass("severe");
         }
-        else if(uvIndex > 2 && uvIndex <= 5){
+        else if(uvIndex > 2 && uvIndex <= 7){
             $(".uv-number").addClass("moderate");
             $(".uv-number").removeClass("mild");
             $(".uv-number").removeClass("severe");
@@ -202,8 +201,8 @@ $(document).ready(function(){
         }
     }
 
-//What's left:
-    //add state to current city header
-    //what if they type in non-sense
-    //Clear search feild after search
+//Future State:
+    //Add state to current city header
+    //Validation of searched criteria
+    //Clear search feild after search button pushed or enter keydown
 })
