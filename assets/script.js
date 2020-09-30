@@ -22,7 +22,7 @@ $(document).ready(function(){
 
     //Variables for API calls and local storage set up
     var cityNames = [];
-    localStorage.clear();
+    //localStorage.clear();   //for testing
     var APIkey = "84e4a73dbe21261105a8b82f64a0523a";
 
     //Start screen - show modal requesting initial search input, hide via opacity the side-bar and main-content. Initializes local storage by populating cityNames with any from local storage 
@@ -107,7 +107,7 @@ $(document).ready(function(){
 
     //render cities in local storage as list group items
     function renderCities(){
-        //populate list items
+        //populate list items - how to avoid multiple adds when search is clicked
         $(".list-group").html("");
         $.each(cityNames, function(index, value){
             var li = $("<li>");

@@ -24,14 +24,16 @@
         <title>Do I Need a Jacket?</title>
     </head>
     <body>
+        <!--Header-->
         <header class="jumbotron jumbotron-fluid fixed-top title-bar">
             <div class="container title-textbox">
               <h1 class="display-4">Do I Need a Jacket?</h1>
               <p class="lead">Prepare for the day and view the next 5</p>
             </div>
         </header>
+        <!--Container for page content other than the header for bootstrap grid utilization-->
         <div class="page-content">
-          <!--Modal for initial screen-->
+          <!--Modal with initial search screen-->
           <div class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
@@ -53,25 +55,27 @@
               </div>
             </div>
           </div>
-            <!--Side Bar and Main Content once modal has been dismissed-->
+            <!--Side Bar and Main Content once modal has been dismissed with bootstrap framework-->
             <div class="row">
                 <div class="col-md-3 side-bar">
                     <div class="wrapper">
+                      <!--Search bar to populate main content with specific city info-->
                         <form class="form-inline">
                             <div class="form">
                               <input class="form-control" placeholder="City Name">
                             </div>
                             <button class="btn btn-primary search-button-2">Search</button>
                         </form>
+                        <!--Search history dynamically populated as the user searches cities-->
                         <h1 class="search-history">Search History</h1>
                         <ul class="list-group">
-                            <!-- For Testing: line 42 will be appended via functions
-                            <li class="list-group-item">(first city)</li> -->
                         </ul>
                     </div>
                 </div>
+                <!--Weather content with current forecast and 5-day forecast-->
                 <div class="col-md-9 main-content">
                     <div class="wrapper">
+                      <!--Current Forecast Card-->
                         <div class="row">
                             <h1 class="display-4 current-forecast">Current Forecast</h1>
                         </div>
@@ -101,6 +105,7 @@
                                 </div>
                               </div>
                         </div>
+                        <!--5 Day Forecast with bootstrap card deck-->
                         <div class="row">
                             <h1 class="display-4 five-day">5 Day Forecast</h1>
                         </div>
