@@ -13,3 +13,8 @@ Screenshots of the app are included below:
 ![Mobile View Start](/assets/05-Mobile-Start)
 ![Mobile Search Screen](/assets/05-Mobile-Search)
 
+Future State Product will include:
+*Search entry validation - when the user misspells or does not enter a city name, the app will ask for validation and reentry
+*Addition of the State the city is located into the header which states the city name
+*Clear the search field of the previously searched city name so that the placeholder is visible again as "City Name"
+
